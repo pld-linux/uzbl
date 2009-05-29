@@ -23,6 +23,8 @@ with modifier keys) browser based on Webkit.
 %prep
 %setup -q -n %{name}-%{gitdate}
 
+find examples -type f | xargs sed -i 's,/examples/,/,g'
+
 %build
 %{__make}
 
@@ -32,6 +34,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+mv $RPM_BUILD_ROOT%{_datadir}/uzbl/examples/* $RPM_BUILD_ROOT%{_datadir}/uzbl
+rm -r $RPM_BUILD_ROOT%{_datadir}/uzbl/{docs,examples}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -40,4 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README docs/*
 %attr(755,root,root) %{_bindir}/uzbl
 %attr(755,root,root) %{_bindir}/uzblctrl
-%{_datadir}/uzbl
+%dir %{_datadir}/uzbl/scripts
+%attr(755,root,root) %{_datadir}/uzbl/scripts/*
+%{_datadir}/uzbl/data
+%{_datadir}/uzbl/configs
