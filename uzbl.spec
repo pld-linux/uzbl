@@ -4,7 +4,7 @@
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Name:		uzbl
 Version:	0
-Release:	0.%{gitdate}.1
+Release:	0.%{gitdate}.2
 License:	GPL v3
 Group:		X11/Applications/Networking
 Source0:	%{name}-%{gitdate}.tar.xz
