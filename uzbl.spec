@@ -45,6 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README docs/*
 %attr(755,root,root) %{_bindir}/uzbl
 %attr(755,root,root) %{_bindir}/uzblctrl
+%dir %{_datadir}/uzbl
 %dir %{_datadir}/uzbl/scripts
 %attr(755,root,root) %{_datadir}/uzbl/scripts/*
 %{_datadir}/uzbl/data
