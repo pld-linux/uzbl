@@ -3,16 +3,16 @@
 # - unbash example scripts
 # - example scripts should use $XDG_DATA_HOME, not tmp nor /usr/share
 
-%define		gitdate 20090526
+%define		gitdate 20090607
 
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Name:		uzbl
 Version:	0
-Release:	0.%{gitdate}.2
+Release:	0.%{gitdate}.1
 License:	GPL v3
 Group:		X11/Applications/Networking
 Source0:	%{name}-%{gitdate}.tar.xz
-# Source0-md5:	58a2ccd187b6de901f64b2968c36802d
+# Source0-md5:	765305c15a96656b6f702673db821e8b
 URL:		http://www.uzbl.org/
 BuildRequires:	curl-devel
 BuildRequires:	gtk+2-devel
