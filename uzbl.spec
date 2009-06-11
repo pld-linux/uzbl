@@ -6,6 +6,7 @@
 %define		gitdate 20090607
 
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
+Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Name:		uzbl
 Version:	0
 Release:	0.%{gitdate}.1
@@ -24,18 +25,30 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The uzbl browser is a keyboard controlled (modal vim-like bindings, or
 with modifier keys) browser based on Webkit.
 
+%description -l hu.UTF-8
+Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok)
+böngésző Webkit alapokon.
+
 %package examples
 Summary:	Example config and scripts for uzbl
+Summary(hu.UTF-8):	Példa konfigurációs fájlok és szkriptek uzbl-hez
 Summary(pl.UTF8):	Przykładowa konfiguracja i skrypty dla uzbl
 Group:		Documentation
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	bash
 Requires:	dmenu
-Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	zenity
 
 %description examples
-Example config files and scripts for uzbl. If you want just try uzbl install
-this package and run:
+Example config files and scripts for uzbl. If you want just try uzbl
+install this package and run:
+
+uzbl -c %{_datadir}/uzbl/configs/sampleconfig
+
+%description examples -l hu.UTF-8
+Példa konfigurációs fájlok és szkriptek uzbl-hez. Ha ki akarod
+próbálni az uzbl-lel, akkor telepítsd ezt a csomagot és a következő
+paranccsal indíthatod:
 
 uzbl -c %{_datadir}/uzbl/configs/sampleconfig
 
@@ -66,6 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/uzblctrl
 
 %files examples
+%defattr(644,root,root,755)
 %dir %{_datadir}/uzbl
 %dir %{_datadir}/uzbl/scripts
 %attr(755,root,root) %{_datadir}/uzbl/scripts/*
