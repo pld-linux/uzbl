@@ -2,8 +2,9 @@
 # - Where to place example config files and scripts?
 # - unbash example scripts
 # - example scripts should use $XDG_DATA_HOME, not tmp nor /usr/share
+# - ... rewrite example config and scripts from scratch.
 
-%define		gitdate 20090607
+%define		gitdate 20090620
 
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
@@ -13,7 +14,7 @@ Release:	0.%{gitdate}.1
 License:	GPL v3
 Group:		X11/Applications/Networking
 Source0:	%{name}-%{gitdate}.tar.xz
-# Source0-md5:	765305c15a96656b6f702673db821e8b
+# Source0-md5:	314bbf2d41bfa2aab9644dd6bced5184
 URL:		http://www.uzbl.org/
 BuildRequires:	curl-devel
 BuildRequires:	gtk+2-devel
@@ -81,7 +82,11 @@ rm -rf $RPM_BUILD_ROOT
 %files examples
 %defattr(644,root,root,755)
 %dir %{_datadir}/uzbl
-%dir %{_datadir}/uzbl/scripts
-%attr(755,root,root) %{_datadir}/uzbl/scripts/*
-%{_datadir}/uzbl/data
-%{_datadir}/uzbl/configs
+%dir %{_datadir}/uzbl/data
+%dir %{_datadir}/uzbl/data/uzbl
+%dir %{_datadir}/uzbl/data/uzbl/scripts
+%attr(755,root,root) %{_datadir}/uzbl/data/uzbl/scripts/*
+%{_datadir}/uzbl/data/uzbl/forms
+%{_datadir}/uzbl/data/uzbl/bookmarks
+%{_datadir}/uzbl/data/uzbl/*.*
+%{_datadir}/uzbl/config
