@@ -33,11 +33,15 @@ böngésző Webkit alapokon.
 
 %package tabbed
 Summary:	Tabs for uzbl
+Summary(hu.UTF-8):	Tabok uzbl-hez
 Group:		X11/Applications/Networking
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description tabbed
 Wrapper for uzbl that provides firefox-style tabs.
+
+%description tabbed -l hu.UTF-8
+Egy uzbl-wrapper, amely firefox-stílusú tabok használatát teszi lehetővé.
 
 %package scripts
 Summary:	Scripts for uzbl
@@ -49,7 +53,7 @@ Scripts for uzbl that handles cookies, downloads, history, etc.
 
 %package examples
 Summary:	Example configs
-Summary(hu.UTF-8):	Példa konfigurációs fájlok és szkriptek uzbl-hez
+Summary(hu.UTF-8):	Példa konfigurációs fájlok 
 Summary(pl.UTF8):	Przykładowa konfiguracja dla uzbl
 Group:		Documentation
 Requires:	%{name} = %{epoch}:%{version}-%{release}
@@ -64,9 +68,9 @@ and run:
 uzbl -c %{_examplesdir}/%{name}-%{version}/config
 
 %description examples -l hu.UTF-8
-Példa konfigurációs fájlok és szkriptek uzbl-hez. Ha ki akarod
+Példa konfigurációs fájlok. Ha ki akarod
 próbálni az uzbl-lel, akkor telepítsd ezt a csomagot és a következő
-paranccsal indíthatod:
+paranccsal indítsd:
 
 uzbl -c %{_examplesdir}/%{name}-%{version}/config
 
