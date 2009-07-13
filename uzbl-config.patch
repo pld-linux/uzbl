@@ -1,0 +1,75 @@
+--- examples/config/uzbl/config.b	2009-07-13 15:52:39.000000000 +0200
++++ examples/config/uzbl/config	2009-07-13 15:53:43.000000000 +0200
+@@ -7,9 +7,9 @@
+ # from insert mode by combining them with the modkey
+ 
+ # Usually you want to spawn a script to handle things, but any command (such as sh) can be used
+-set history_handler  = spawn $XDG_DATA_HOME/uzbl/scripts/history.sh
+-set download_handler = spawn $XDG_DATA_HOME/uzbl/scripts/download.sh
+-set cookie_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/cookies.py
++set history_handler  = spawn /usr/share/uzbl/scripts/history.sh
++set download_handler = spawn /usr/share/uzbl/scripts/download.sh
++set cookie_handler   = spawn /usr/share/uzbl/scripts/cookies.py
+ 
+ # You can bind whatever things (spawn <foo>, script <bar>,..) to some events TODO: make events system more generic
+ set load_start_handler = set status_message = <span foreground="khaki">wait</span>
+@@ -135,12 +135,12 @@
+ bind    I         = toggle_insert_mode 0
+ # Enclose the executable in quotes if it has spaces.  Any additional parameters you use will
+ # appear AFTER the default parameters
+-bind    B         = spawn $XDG_DATA_HOME/uzbl/scripts/insert_bookmark.sh
+-bind    U         = spawn $XDG_DATA_HOME/uzbl/scripts/load_url_from_history.sh
+-bind    u         = spawn $XDG_DATA_HOME/uzbl/scripts/load_url_from_bookmarks.sh
++bind    B         = spawn /usr/share/uzbl/scripts/insert_bookmark.sh
++bind    U         = spawn /usr/share/uzbl/scripts/load_url_from_history.sh
++bind    u         = spawn /usr/share/uzbl/scripts/load_url_from_bookmarks.sh
+ # with the sample yank script, you can yank one of the arguments into clipboard/selection
+-bind    yurl      = spawn $XDG_DATA_HOME/uzbl/scripts/yank.sh 6 primary
+-bind    ytitle    = spawn $XDG_DATA_HOME/uzbl/scripts/yank.sh 7 clipboard
++bind    yurl      = spawn /usr/share/uzbl/scripts/yank.sh 6 primary
++bind    ytitle    = spawn /usr/share/uzbl/scripts/yank.sh 7 clipboard
+ # does the same as yurl but without needing a script
+ bind    y2url     = sh 'echo -n $6 | xclip'
+ # go the page from primary selection
+@@ -164,25 +164,25 @@
+ bind    !reload   = sh 'cat $1 > $4'
+ 
+ # this script allows you to configure (per domain) values to fill in form fields (eg login information) and to fill in these values automatically
+-bind za = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.sh
+-bind ze = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.sh edit
+-bind zn = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.sh new
+-bind zl = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.sh load
++bind za = spawn /usr/share/uzbl/scripts/formfiller.sh
++bind ze = spawn /usr/share/uzbl/scripts/formfiller.sh edit
++bind zn = spawn /usr/share/uzbl/scripts/formfiller.sh new
++bind zl = spawn /usr/share/uzbl/scripts/formfiller.sh load
+ 
+ # other - more advanced - implementation using perl: (could not get this to run - Dieter )
+-bind LL = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.pl load
+-bind LN = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.pl new
+-bind LE = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.pl edit
++bind LL = spawn /usr/share/uzbl/scripts/formfiller.pl load
++bind LN = spawn /usr/share/uzbl/scripts/formfiller.pl new
++bind LE = spawn /usr/share/uzbl/scripts/formfiller.pl edit
+ 
+ # we ship some javascripts to do keyboard based link hinting/following.  (webkit does not have C DOM bindings yet)
+ # this is similar to how it works in vimperator (and konqueror)
+ # TODO: did we resolve: "no click() event for hyperlinks so no referrer set" ?
+ #hit F to toggle the Hints (now in form of link numbering)
+-bind    F = script $XDG_DATA_HOME/uzbl/scripts/hint.js
++bind    F = script /usr/share/uzbl/scripts/hint.js
+ # the most stable version:
+-bind    fl* = script $XDG_DATA_HOME/uzbl/scripts/follow_Numbers.js %s
++bind    fl* = script /usr/share/uzbl/scripts/follow_Numbers.js %s
+ # using strings, not polished yet:
+-bind    fL* = script $XDG_DATA_HOME/uzbl/scripts/follow_Numbers_Strings.js %s
++bind    fL* = script /usr/share/uzbl/scripts/follow_Numbers_Strings.js %s
+ 
+ # you can use this to disable all plugins
+ set disable_plugins = 0
+@@ -190,4 +190,4 @@
+ set icon = ./uzbl.png
+ 
+ # "home" page if you will
+-set uri = uzbl.org
++set uri = http://pld-linux.org
