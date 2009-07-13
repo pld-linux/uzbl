@@ -30,6 +30,14 @@ with modifier keys) browser based on Webkit.
 Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok)
 böngésző Webkit alapokon.
 
+%package tabbed
+Summary:	Tabs for uzbl
+Group:		X11/Applications/Networking
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description tabbed
+Wrapper for uzbl that provides firefox-style tabs.
+
 %package examples
 Summary:	Example config and scripts for uzbl
 Summary(hu.UTF-8):	Példa konfigurációs fájlok és szkriptek uzbl-hez
@@ -67,6 +75,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# tabbed
+mv $RPM_BUILD_ROOT%{_datadir}/uzbl/examples/data/uzbl/scripts/uzbl_tabbed.py $RPM_BUILD_ROOT%{_bindir}/uzbl_tabbed
+
+# examples
 mv $RPM_BUILD_ROOT%{_datadir}/uzbl/examples/* $RPM_BUILD_ROOT%{_datadir}/uzbl
 rm -r $RPM_BUILD_ROOT%{_datadir}/uzbl/{docs,examples}
 
@@ -78,6 +90,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README docs/*
 %attr(755,root,root) %{_bindir}/uzbl
 %attr(755,root,root) %{_bindir}/uzblctrl
+
+%files tabbed
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/uzbl_tabbed
 
 %files examples
 %defattr(644,root,root,755)
