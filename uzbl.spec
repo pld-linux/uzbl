@@ -1,8 +1,5 @@
 # TODO:
-# - Where to place example config files and scripts?
 # - unbash example scripts
-# - example scripts should use $XDG_DATA_HOME, not tmp nor /usr/share
-# - ... rewrite example config and scripts from scratch.
 
 %define		gitdate 20090703
 
