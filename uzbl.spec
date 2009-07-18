@@ -1,7 +1,7 @@
 # TODO:
 # - unbash example scripts
 
-%define		gitdate 20090703
+%define		gitdate 20090718
 
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
@@ -10,8 +10,9 @@ Version:	0
 Release:	0.%{gitdate}.1
 License:	GPL v3
 Group:		X11/Applications/Networking
-Source0:	%{name}-%{gitdate}.tar.xz
-# Source0-md5:	e90ffe6b73747731a1d9d7c456e3e411
+# git://github.com/Dieterbe/uzbl.git
+Source0:	%{name}-%{gitdate}.tar.bz2
+# Source0-md5:	f5018ec67508bd35a018471a64575d65
 Patch0:		uzbl-config.patch
 URL:		http://www.uzbl.org/
 BuildRequires:	curl-devel
@@ -74,7 +75,7 @@ uzbl -c %{_examplesdir}/%{name}-%{version}/config
 %prep
 %setup -q -n %{name}-%{gitdate}
 
-%patch0 -p0
+%patch0 -p1
 
 %build
 %{__make}
