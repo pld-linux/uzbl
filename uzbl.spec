@@ -14,6 +14,7 @@ Group:		X11/Applications/Networking
 Source0:	%{name}-%{gitdate}.tar.bz2
 # Source0-md5:	f5018ec67508bd35a018471a64575d65
 Patch0:		uzbl-config.patch
+Patch1:		uzbl-dmenu.patch
 URL:		http://www.uzbl.org/
 BuildRequires:	curl-devel
 BuildRequires:	gtk+2-devel
@@ -76,6 +77,7 @@ uzbl -c %{_examplesdir}/%{name}-%{version}/config
 %setup -q -n %{name}-%{gitdate}
 
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make}
