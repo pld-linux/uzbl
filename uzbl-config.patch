@@ -1,19 +1,29 @@
---- examples/config/uzbl/config.b	2009-07-13 15:52:39.000000000 +0200
-+++ examples/config/uzbl/config	2009-07-13 15:53:43.000000000 +0200
-@@ -7,9 +7,9 @@
- # from insert mode by combining them with the modkey
+diff --git a/examples/config/uzbl/config b/examples/config/uzbl/config
+index ab2cf7f..d34795e 100644
+--- a/examples/config/uzbl/config
++++ b/examples/config/uzbl/config
+@@ -4,9 +4,9 @@
+ # keyboard behavior in this sample config is sort of vimstyle
  
- # Usually you want to spawn a script to handle things, but any command (such as sh) can be used
+ # Handlers
 -set history_handler  = spawn $XDG_DATA_HOME/uzbl/scripts/history.sh
 -set download_handler = spawn $XDG_DATA_HOME/uzbl/scripts/download.sh
 -set cookie_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/cookies.py
 +set history_handler  = spawn /usr/share/uzbl/scripts/history.sh
 +set download_handler = spawn /usr/share/uzbl/scripts/download.sh
 +set cookie_handler   = spawn /usr/share/uzbl/scripts/cookies.py
- 
- # You can bind whatever things (spawn <foo>, script <bar>,..) to some events TODO: make events system more generic
+ #set new_window      = sh 'echo uri "$8" > $4' # open in same window
+ set new_window       = sh 'uzbl -u $8' # equivalent to the default behaviour
  set load_start_handler = set status_message = <span foreground="khaki">wait</span>
-@@ -135,12 +135,12 @@
+@@ -60,6 +60,7 @@ bind    gh        = uri http://www.uzbl.org
+ bind    o _       = uri %s
+ # shortcut to set variables
+ bind    s _       = set %s
++# TODO use pld wiki? Or at least wikipedia.
+ bind    \wiki _   = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go
+ bind    gg _      = uri http://www.google.com/search?q=%s
+ bind    i         = toggle_insert_mode
+@@ -67,12 +68,12 @@ bind    i         = toggle_insert_mode
  bind    I         = toggle_insert_mode 0
  # Enclose the executable in quotes if it has spaces.  Any additional parameters you use will
  # appear AFTER the default parameters
@@ -31,7 +41,7 @@
  # does the same as yurl but without needing a script
  bind    y2url     = sh 'echo -n $6 | xclip'
  # go the page from primary selection
-@@ -164,25 +164,25 @@
+@@ -96,26 +97,26 @@ bind    !dump     = sh "echo dump_config > $4"
  bind    !reload   = sh 'cat $1 > $4'
  
  # this script allows you to configure (per domain) values to fill in form fields (eg login information) and to fill in these values automatically
@@ -65,10 +75,6 @@
 -bind    fL* = script $XDG_DATA_HOME/uzbl/scripts/follow_Numbers_Strings.js %s
 +bind    fL* = script /usr/share/uzbl/scripts/follow_Numbers_Strings.js %s
  
- # you can use this to disable all plugins
- set disable_plugins = 0
-@@ -190,4 +190,4 @@
- set icon = ./uzbl.png
  
  # "home" page if you will
 -set uri = uzbl.org
