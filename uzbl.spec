@@ -1,7 +1,7 @@
 # TODO:
 # - unbash example scripts
 
-%define		gitdate 20090826
+%define		gitdate 20090912
 
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
@@ -12,8 +12,8 @@ Release:	0.%{gitdate}.1
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
-Source0:	%{name}-%{gitdate}.tar.bz2
-# Source0-md5:	f6cf15c86e2f87cb179a71dc77e3f3d2
+Source0:	http://xatka.net/~z/PLD/%{name}-%{gitdate}.tar.bz2
+# Source0-md5:	f0a619f6a61679756508dc1aa2db8926
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-dmenu.patch
 URL:		http://www.uzbl.org/
@@ -82,6 +82,7 @@ Group:		Documentation
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	bash
 Requires:	dmenu
+Requires:	socat
 Requires:	zenity
 
 %description examples
@@ -115,7 +116,7 @@ uzbl -c %{_examplesdir}/%{name}-%{version}/config
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	PREFIX=$RPM_BUILD_ROOT%{_prefix}
 
 # tabbed
 mv $RPM_BUILD_ROOT%{_datadir}/uzbl/examples/data/uzbl/scripts/uzbl_tabbed.py $RPM_BUILD_ROOT%{_bindir}/uzbl_tabbed
@@ -137,7 +138,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS README docs/*
 %attr(755,root,root) %{_bindir}/uzbl
-%attr(755,root,root) %{_bindir}/uzblctrl
 %dir %{_datadir}/uzbl
 
 %files tabbed
