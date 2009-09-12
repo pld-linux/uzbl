@@ -1,20 +1,26 @@
 diff --git a/examples/config/uzbl/config b/examples/config/uzbl/config
-index ab2cf7f..d34795e 100644
+index 47d8839..275c248 100644
 --- a/examples/config/uzbl/config
 +++ b/examples/config/uzbl/config
-@@ -4,9 +4,9 @@
+@@ -4,14 +4,14 @@
  # keyboard behavior in this sample config is sort of vimstyle
  
  # Handlers
--set history_handler  = spawn $XDG_DATA_HOME/uzbl/scripts/history.sh
 -set download_handler = spawn $XDG_DATA_HOME/uzbl/scripts/download.sh
 -set cookie_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/cookies.py
-+set history_handler  = spawn /usr/share/uzbl/scripts/history.sh
 +set download_handler = spawn /usr/share/uzbl/scripts/download.sh
 +set cookie_handler   = spawn /usr/share/uzbl/scripts/cookies.py
  #set new_window      = sh 'echo uri "$8" > $4' # open in same window
  set new_window       = sh 'uzbl -u $8' # equivalent to the default behaviour
- set load_start_handler = set status_message = <span foreground="khaki">wait</span>
+-set scheme_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/scheme.py
++set scheme_handler   = spawn /usr/share/uzbl/scripts/scheme.py
+ set load_start_handler = chain 'set keycmd = ' 'set status_message = <span foreground="khaki">wait</span>'
+ set load_commit_handler = set status_message = <span foreground="green">recv</span>
+-set load_finish_handler = chain 'set status_message = <span foreground="gold">done</span>' 'spawn $XDG_DATA_HOME/uzbl/scripts/history.sh'
++set load_finish_handler = chain 'set status_message = <span foreground="gold">done</span>' 'spawn /usr/share/uzbl/scripts/history.sh'
+ 
+ 
+ 
 @@ -60,6 +60,7 @@ bind    gh        = uri http://www.uzbl.org
  bind    o _       = uri %s
  # shortcut to set variables

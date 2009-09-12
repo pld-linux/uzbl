@@ -1,5 +1,5 @@
 diff --git a/examples/data/uzbl/scripts/load_url_from_bookmarks.sh b/examples/data/uzbl/scripts/load_url_from_bookmarks.sh
-index f57d7b3..f77dfe4 100755
+index 1e9f9e7..ca49c2b 100755
 --- a/examples/data/uzbl/scripts/load_url_from_bookmarks.sh
 +++ b/examples/data/uzbl/scripts/load_url_from_bookmarks.sh
 @@ -5,16 +5,10 @@
@@ -22,9 +22,9 @@ index f57d7b3..f77dfe4 100755
 +goto=`$DMENU $COLORS < $file | awk '{print $1}'`
  
  #[ -n "$goto" ] && echo "uri $goto" > $4
- [ -n "$goto" ] && uzblctrl -s $5 -c "uri $goto"
+ [ -n "$goto" ] && echo "uri $goto" | socat - unix-connect:$5
 diff --git a/examples/data/uzbl/scripts/load_url_from_history.sh b/examples/data/uzbl/scripts/load_url_from_history.sh
-index 1eaf0f2..ff5e790 100755
+index 62e02ac..756c962 100755
 --- a/examples/data/uzbl/scripts/load_url_from_history.sh
 +++ b/examples/data/uzbl/scripts/load_url_from_history.sh
 @@ -6,19 +6,10 @@ history_file=${XDG_DATA_HOME:-$HOME/.local/share}/uzbl/history
@@ -50,4 +50,4 @@ index 1eaf0f2..ff5e790 100755
 +goto=`tac $history_file | $DMENU $COLORS | cut -d ' ' -f -3  | awk '{print $NF}'`
  
  [ -n "$goto" ] && echo "uri $goto" > $4
- #[ -n "$goto" ] && uzblctrl -s $5 -c "uri $goto"
+ #[ -n "$goto" ] && echo "uri $goto" | socat - unix-connect:$5
