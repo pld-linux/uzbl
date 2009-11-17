@@ -21,6 +21,8 @@ BuildRequires:	curl-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	gtk-webkit-devel
 BuildRequires:	libsoup-devel
+BuildRequires:	pkgconfig
+BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
