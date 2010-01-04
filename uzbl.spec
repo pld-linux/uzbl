@@ -47,8 +47,14 @@ bardzo elastyczna, konfigurowalna i może być w łatwy sposób rozszerzana.
 Summary:	Uzbl core
 Summary(pl.UTF-8):	Jądro Uzbl
 Group:		X11/Applications/Networking
+Requires:	bash
+Requires:	dmenu
+Requires:	socat
+Requires:	zenity
 Suggests:	%{name}-cookie-daemon = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-event-manager = %{epoch}:%{version}-%{release}
+Obsoletes:	%{name}-examples
+Obsoletes:	%{name}-scripts
 
 %description core
 Main component of uzbl browser. You also need one of UI components
@@ -98,48 +104,6 @@ lehetővé.
 Skrypt, który dodaje do uzbl taby podobne do tych znanych użytkownikom
 przeglądarki firefox.
 
-%package scripts
-Summary:	Scripts for uzbl
-Summary(pl.UTF-8):	Skrypty rozszerzające funkcjonalność uzbl
-Group:		X11/Applications/Networking
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-
-%description scripts
-Scripts for uzbl that handles cookies, downloads, history, etc.
-
-%description scripts -l pl.UTF-8
-Skrypty dodające do uzbl obsługę cookies, pobierania plików, historii
-i tym podobnych.
-
-%package examples
-Summary:	Example configs
-Summary(hu.UTF-8):	Példa konfigurációs fájlok
-Summary(pl.UTF-8):	Przykładowa konfiguracja dla uzbl
-Group:		Documentation
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	bash
-Requires:	dmenu
-Requires:	socat
-Requires:	zenity
-
-%description examples
-Example config files for uzbl. If you want just try uzbl install this
-package and run:
-
-uzbl -c %{_examplesdir}/%{name}-%{version}/config
-
-%description examples -l hu.UTF-8
-Példa konfigurációs fájlok. Ha ki akarod próbálni az uzbl-lel, akkor
-telepítsd ezt a csomagot és a következő paranccsal indítsd:
-
-uzbl -c %{_examplesdir}/%{name}-%{version}/config
-
-%description examples -l pl.UTF-8
-Przykładowa konfiguracja przeglądarki uzbl. Jeżeli chcesz po prostu
-wypróbować uzbl, zainstaluj ten pakiet i wykonaj komendę:
-
-uzbl -c %{_examplesdir}/%{name}-%{version}/config
-
 %prep
 %setup -q -n Dieterbe-uzbl-4994115
 
@@ -156,10 +120,6 @@ rm -rf $RPM_BUILD_ROOT
 	PREFIX=%{_prefix} \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# most important scripts
-install -d $RPM_BUILD_ROOT%{_datadir}/uzbl/scripts
-mv $RPM_BUILD_ROOT%{_datadir}/uzbl/examples/data/uzbl/scripts $RPM_BUILD_ROOT%{_datadir}/uzbl
-
 rm -r $RPM_BUILD_ROOT%{_datadir}/uzbl/docs
 
 ln -s %{_bindir}/uzbl-browser $RPM_BUILD_ROOT%{_bindir}/uzbl
@@ -172,11 +132,23 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README docs/*
 %attr(755,root,root) %{_bindir}/uzbl
 %attr(755,root,root) %{_bindir}/uzbl-browser
-%dir %{_datadir}/uzbl
 
 %files core
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/uzbl-core
+%dir %{_datadir}/uzbl
+%dir %{_datadir}/uzbl/examples
+%{_datadir}/uzbl/examples/config
+%dir %{_datadir}/uzbl/examples/data
+%dir %{_datadir}/uzbl/examples/data/uzbl
+%dir %{_datadir}/uzbl/examples/data/uzbl/scripts
+%dir %{_datadir}/uzbl/examples/data/uzbl/plugins
+%attr(755,root,root) %{_datadir}/uzbl/examples/data/uzbl/scripts/*
+%attr(755,root,root) %{_datadir}/uzbl/examples/data/uzbl/plugins/*
+%{_datadir}/uzbl/examples/data/uzbl/forms
+%{_datadir}/uzbl/examples/data/uzbl/bookmarks
+%{_datadir}/uzbl/examples/data/uzbl/style.css
+%{_datadir}/uzbl/examples/data/uzbl/uzbl.png
 
 %files event-manager
 %defattr(644,root,root,755)
@@ -189,12 +161,3 @@ rm -rf $RPM_BUILD_ROOT
 %files tabbed
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/uzbl-tabbed
-
-%files scripts
-%defattr(644,root,root,755)
-%dir %{_datadir}/uzbl/scripts
-%attr(755,root,root) %{_datadir}/uzbl/scripts/*
-
-%files examples
-%defattr(644,root,root,755)
-%{_datadir}/uzbl/examples
