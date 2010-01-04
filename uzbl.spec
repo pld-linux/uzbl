@@ -50,6 +50,7 @@ Group:		X11/Applications/Networking
 Requires:	bash
 Requires:	dmenu
 Requires:	socat
+Requires:	xclip
 Requires:	zenity
 Suggests:	%{name}-cookie-daemon = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-event-manager = %{epoch}:%{version}-%{release}
