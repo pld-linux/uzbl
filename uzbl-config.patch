@@ -1,87 +1,17 @@
-diff --git a/examples/config/uzbl/config b/examples/config/uzbl/config
-index 47d8839..275c248 100644
---- a/examples/config/uzbl/config
-+++ b/examples/config/uzbl/config
-@@ -4,14 +4,14 @@
- # keyboard behavior in this sample config is sort of vimstyle
+--- Dieterbe-uzbl-4994115/examples/config/uzbl/config~	2009-12-22 18:07:54.000000000 +0100
++++ Dieterbe-uzbl-4994115/examples/config/uzbl/config	2010-01-04 08:39:42.000000000 +0100
+@@ -331,7 +331,7 @@
  
- # Handlers
--set download_handler = spawn $XDG_DATA_HOME/uzbl/scripts/download.sh
--set cookie_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/cookies.py
-+set download_handler = spawn /usr/share/uzbl/scripts/download.sh
-+set cookie_handler   = spawn /usr/share/uzbl/scripts/cookies.py
- #set new_window      = sh 'echo uri "$8" > $4' # open in same window
- set new_window       = sh 'uzbl -u $8' # equivalent to the default behaviour
--set scheme_handler   = spawn $XDG_DATA_HOME/uzbl/scripts/scheme.py
-+set scheme_handler   = spawn /usr/share/uzbl/scripts/scheme.py
- set load_start_handler = chain 'set keycmd = ' 'set status_message = <span foreground="khaki">wait</span>'
- set load_commit_handler = set status_message = <span foreground="green">recv</span>
--set load_finish_handler = chain 'set status_message = <span foreground="gold">done</span>' 'spawn $XDG_DATA_HOME/uzbl/scripts/history.sh'
-+set load_finish_handler = chain 'set status_message = <span foreground="gold">done</span>' 'spawn /usr/share/uzbl/scripts/history.sh'
+ # Default context menu
+ menu_add Google = set uri = http://google.com
+-menu_add Go Home = set uri = http://uzbl.org
++menu_add Go Home = set uri = http://pld-linux.org
+ menu_separator separator_1
+ menu_add Quit uzbl = exit
  
+@@ -370,4 +370,4 @@
+ # === Post-load misc commands  ===============================================
  
- 
-@@ -60,6 +60,7 @@ bind    gh        = uri http://www.uzbl.org
- bind    o _       = uri %s
- # shortcut to set variables
- bind    s _       = set %s
-+# TODO use pld wiki? Or at least wikipedia.
- bind    \wiki _   = uri http://wiki.archlinux.org/index.php/Special:Search?search=%s&go=Go
- bind    gg _      = uri http://www.google.com/search?q=%s
- bind    i         = toggle_insert_mode
-@@ -67,12 +68,12 @@ bind    i         = toggle_insert_mode
- bind    I         = toggle_insert_mode 0
- # Enclose the executable in quotes if it has spaces.  Any additional parameters you use will
- # appear AFTER the default parameters
--bind    B         = spawn $XDG_DATA_HOME/uzbl/scripts/insert_bookmark.sh
--bind    U         = spawn $XDG_DATA_HOME/uzbl/scripts/load_url_from_history.sh
--bind    u         = spawn $XDG_DATA_HOME/uzbl/scripts/load_url_from_bookmarks.sh
-+bind    B         = spawn /usr/share/uzbl/scripts/insert_bookmark.sh
-+bind    U         = spawn /usr/share/uzbl/scripts/load_url_from_history.sh
-+bind    u         = spawn /usr/share/uzbl/scripts/load_url_from_bookmarks.sh
- # with the sample yank script, you can yank one of the arguments into clipboard/selection
--bind    yurl      = spawn $XDG_DATA_HOME/uzbl/scripts/yank.sh 6 primary
--bind    ytitle    = spawn $XDG_DATA_HOME/uzbl/scripts/yank.sh 7 clipboard
-+bind    yurl      = spawn /usr/share/uzbl/scripts/yank.sh 6 primary
-+bind    ytitle    = spawn /usr/share/uzbl/scripts/yank.sh 7 clipboard
- # does the same as yurl but without needing a script
- bind    y2url     = sh 'echo -n $6 | xclip'
- # go the page from primary selection
-@@ -96,26 +97,26 @@ bind    !dump     = sh "echo dump_config > $4"
- bind    !reload   = sh 'cat $1 > $4'
- 
- # this script allows you to configure (per domain) values to fill in form fields (eg login information) and to fill in these values automatically
--bind za = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.sh
--bind ze = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.sh edit
--bind zn = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.sh new
--bind zl = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.sh load
-+bind za = spawn /usr/share/uzbl/scripts/formfiller.sh
-+bind ze = spawn /usr/share/uzbl/scripts/formfiller.sh edit
-+bind zn = spawn /usr/share/uzbl/scripts/formfiller.sh new
-+bind zl = spawn /usr/share/uzbl/scripts/formfiller.sh load
- 
- # other - more advanced - implementation using perl: (could not get this to run - Dieter )
--bind LL = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.pl load
--bind LN = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.pl new
--bind LE = spawn $XDG_DATA_HOME/uzbl/scripts/formfiller.pl edit
-+bind LL = spawn /usr/share/uzbl/scripts/formfiller.pl load
-+bind LN = spawn /usr/share/uzbl/scripts/formfiller.pl new
-+bind LE = spawn /usr/share/uzbl/scripts/formfiller.pl edit
- 
- # we ship some javascripts to do keyboard based link hinting/following.  (webkit does not have C DOM bindings yet)
- # this is similar to how it works in vimperator (and konqueror)
- # TODO: did we resolve: "no click() event for hyperlinks so no referrer set" ?
- #hit F to toggle the Hints (now in form of link numbering)
--bind    F = script $XDG_DATA_HOME/uzbl/scripts/hint.js
-+bind    F = script /usr/share/uzbl/scripts/hint.js
- # the most stable version:
--bind    fl* = script $XDG_DATA_HOME/uzbl/scripts/follow_Numbers.js %s
-+bind    fl* = script /usr/share/uzbl/scripts/follow_Numbers.js %s
- # using strings, not polished yet:
--bind    fL* = script $XDG_DATA_HOME/uzbl/scripts/follow_Numbers_Strings.js %s
-+bind    fL* = script /usr/share/uzbl/scripts/follow_Numbers_Strings.js %s
- 
- 
- # "home" page if you will
--set uri = uzbl.org
+ # Set the "home" page.
+-set uri = uzbl.org/doesitwork/@COMMIT
 +set uri = http://pld-linux.org
