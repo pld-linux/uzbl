@@ -10,18 +10,18 @@ Release:	1
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
-Source0:	http://github.com/Dieterbe/uzbl/tarball/2009.12.22
+Source0:	http://github.com/Dieterbe/uzbl/tarball/%{version}
 # Source0-md5:	8cf1bd7c2fe6c14345b1671160f0214f
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-dmenu.patch
 URL:		http://www.uzbl.org/
-Requires:	%{name}-core = %{epoch}:%{version}-%{release}
 BuildRequires:	curl-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	gtk-webkit-devel
 BuildRequires:	libsoup-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
+Requires:	%{name}-core = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,9 +39,10 @@ skrótach klawiszowych programu vim. Uzbl może działać w modalnym
 trybie podobnie jak vim albo w trybie przypominającym działanie
 emacsa. uzbl wykorzystuje silnik Webkit.
 
-uzbl sam nie obsługuje zakładek, historii, pobierania plików.  Funkcjonalności
-te są realizowane przez zewnętrzne skrypty. Dzięki temu przeglądarka ta jest
-bardzo elastyczna, konfigurowalna i może być w łatwy sposób rozszerzana.
+uzbl sam nie obsługuje zakładek, historii, pobierania plików.
+Funkcjonalności te są realizowane przez zewnętrzne skrypty. Dzięki
+temu przeglądarka ta jest bardzo elastyczna, konfigurowalna i może być
+w łatwy sposób rozszerzana.
 
 %package core
 Summary:	Uzbl core
@@ -54,8 +55,8 @@ Requires:	xclip
 Requires:	zenity
 Suggests:	%{name}-cookie-daemon = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-event-manager = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-examples
-Obsoletes:	%{name}-scripts
+Obsoletes:	uzbl-examples
+Obsoletes:	uzbl-scripts
 
 %description core
 Main component of uzbl browser. You also need one of UI components
@@ -63,7 +64,8 @@ Main component of uzbl browser. You also need one of UI components
 
 %description core -l pl.UTF-8
 Jądro przeglądarki uzbl. Aby mieć w pełni funkcjonalną przeglądarkę
-potrzebujesz jeszcze jeden z interfejsów graficznych: uzbl lub uzbl-tabbed.
+potrzebujesz jeszcze jeden z interfejsów graficznych: uzbl lub
+uzbl-tabbed.
 
 %package event-manager
 Summary:	Uzbl event manager
@@ -106,7 +108,7 @@ Skrypt, który dodaje do uzbl taby podobne do tych znanych użytkownikom
 przeglądarki firefox.
 
 %prep
-%setup -q -n Dieterbe-uzbl-4994115
+%setup -q -n Dieterbe-%{name}-4994115
 
 %patch0 -p1
 %patch1 -p1
