@@ -5,13 +5,13 @@ Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) 
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
 Name:		uzbl
-Version:	2009.12.22
+Version:	2010.01.05
 Release:	1
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
 Source0:	http://github.com/Dieterbe/uzbl/tarball/%{version}
-# Source0-md5:	8cf1bd7c2fe6c14345b1671160f0214f
+# Source0-md5:	2574fc68a7a7693297d371ca58a4edb4
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-dmenu.patch
 URL:		http://www.uzbl.org/
@@ -108,7 +108,7 @@ Skrypt, który dodaje do uzbl taby podobne do tych znanych użytkownikom
 przeglądarki firefox.
 
 %prep
-%setup -q -n Dieterbe-%{name}-4994115
+%setup -q -n Dieterbe-%{name}-1958b52
 
 %patch0 -p1
 %patch1 -p1
