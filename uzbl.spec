@@ -6,7 +6,7 @@ Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosí
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
 Name:		uzbl
 Version:	2010.01.05
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
@@ -14,6 +14,7 @@ Source0:	http://github.com/Dieterbe/uzbl/tarball/%{version}
 # Source0-md5:	2574fc68a7a7693297d371ca58a4edb4
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-dmenu.patch
+Patch2:		%{name}-config-nojs.patch
 URL:		http://www.uzbl.org/
 BuildRequires:	curl-devel
 BuildRequires:	gtk+2-devel
@@ -112,6 +113,7 @@ przeglądarki firefox.
 
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__make}
