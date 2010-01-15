@@ -1,5 +1,5 @@
---- Dieterbe-uzbl-4994115/examples/config/uzbl/config~	2009-12-22 18:07:54.000000000 +0100
-+++ Dieterbe-uzbl-4994115/examples/config/uzbl/config	2010-01-04 08:39:42.000000000 +0100
+--- Dieterbe-uzbl-4994115/examples/config/config~	2009-12-22 18:07:54.000000000 +0100
++++ Dieterbe-uzbl-4994115/examples/config/config	2010-01-04 08:39:42.000000000 +0100
 @@ -331,7 +331,7 @@
  
  # Default context menu
