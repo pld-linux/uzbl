@@ -18,7 +18,6 @@ Source0:	http://github.com/%{branch}/%{name}/tarball/%{branch}/%{version}
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-dmenu.patch
 URL:		http://www.uzbl.org/
-BuildRequires:	curl-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	gtk-webkit-devel
 BuildRequires:	libsoup-devel
