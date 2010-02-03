@@ -1,20 +1,21 @@
 # TODO:
 # - unbash example scripts
 
+%define		commit	f8d6c93
+
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
 Name:		uzbl
-Version:	2010.01.05
-Release:	2
+Version:	2010.02.02
+Release:	1
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
 Source0:	http://github.com/Dieterbe/uzbl/tarball/%{version}
-# Source0-md5:	2574fc68a7a7693297d371ca58a4edb4
+# Source0-md5:	70a5d47655d5ec11f68ff5b7a7bd68b5
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-dmenu.patch
-Patch2:		%{name}-config-nojs.patch
 URL:		http://www.uzbl.org/
 BuildRequires:	gtk+2-devel
 BuildRequires:	gtk-webkit-devel
@@ -108,11 +109,10 @@ Skrypt, który dodaje do uzbl taby podobne do tych znanych użytkownikom
 przeglądarki firefox.
 
 %prep
-%setup -q -n Dieterbe-%{name}-1958b52
+%setup -q -n Dieterbe-%{name}-%{commit}
 
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__make}
@@ -144,15 +144,14 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/uzbl/examples
 %{_datadir}/uzbl/examples/config
 %dir %{_datadir}/uzbl/examples/data
-%dir %{_datadir}/uzbl/examples/data/uzbl
-%dir %{_datadir}/uzbl/examples/data/uzbl/scripts
-%dir %{_datadir}/uzbl/examples/data/uzbl/plugins
-%attr(755,root,root) %{_datadir}/uzbl/examples/data/uzbl/scripts/*
-%attr(755,root,root) %{_datadir}/uzbl/examples/data/uzbl/plugins/*
-%{_datadir}/uzbl/examples/data/uzbl/forms
-%{_datadir}/uzbl/examples/data/uzbl/bookmarks
-%{_datadir}/uzbl/examples/data/uzbl/style.css
-%{_datadir}/uzbl/examples/data/uzbl/uzbl.png
+%dir %{_datadir}/uzbl/examples/data/scripts
+%dir %{_datadir}/uzbl/examples/data/plugins
+%attr(755,root,root) %{_datadir}/uzbl/examples/data/scripts/*
+%attr(755,root,root) %{_datadir}/uzbl/examples/data/plugins/*
+%{_datadir}/uzbl/examples/data/forms
+%{_datadir}/uzbl/examples/data/bookmarks
+%{_datadir}/uzbl/examples/data/style.css
+%{_datadir}/uzbl/examples/data/uzbl.png
 
 %files event-manager
 %defattr(644,root,root,755)
