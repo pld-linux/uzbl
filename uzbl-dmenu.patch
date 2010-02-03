@@ -1,7 +1,7 @@
-diff --git a/examples/data/uzbl/scripts/load_url_from_bookmarks.sh b/examples/data/uzbl/scripts/load_url_from_bookmarks.sh
+diff --git a/examples/data/scripts/load_url_from_bookmarks.sh b/examples/data/scripts/load_url_from_bookmarks.sh
 index 1e9f9e7..ca49c2b 100755
---- a/examples/data/uzbl/scripts/load_url_from_bookmarks.sh
-+++ b/examples/data/uzbl/scripts/load_url_from_bookmarks.sh
+--- a/examples/data/scripts/load_url_from_bookmarks.sh
++++ b/examples/data/scripts/load_url_from_bookmarks.sh
 @@ -5,16 +5,10 @@
  file=${XDG_DATA_HOME:-$HOME/.local/share}/uzbl/bookmarks
  [ -r "$file" ] || exit
@@ -23,10 +23,10 @@ index 1e9f9e7..ca49c2b 100755
  
  #[ -n "$goto" ] && echo "uri $goto" > $4
  [ -n "$goto" ] && echo "uri $goto" | socat - unix-connect:$5
-diff --git a/examples/data/uzbl/scripts/load_url_from_history.sh b/examples/data/uzbl/scripts/load_url_from_history.sh
+diff --git a/examples/data/scripts/load_url_from_history.sh b/examples/data/scripts/load_url_from_history.sh
 index 62e02ac..756c962 100755
---- a/examples/data/uzbl/scripts/load_url_from_history.sh
-+++ b/examples/data/uzbl/scripts/load_url_from_history.sh
+--- a/examples/data/scripts/load_url_from_history.sh
++++ b/examples/data/scripts/load_url_from_history.sh
 @@ -6,19 +6,10 @@ history_file=${XDG_DATA_HOME:-$HOME/.local/share}/uzbl/history
  # choose from all entries, sorted and uniqued
  # goto=`awk '{print $3}' $history_file | sort -u | dmenu -i`
@@ -51,8 +51,8 @@ index 62e02ac..756c962 100755
  
  [ -n "$goto" ] && echo "uri $goto" > $4
  #[ -n "$goto" ] && echo "uri $goto" | socat - unix-connect:$5
---- Dieterbe-uzbl-4994115/examples/data/uzbl/scripts/instance-select-wmii.sh~	2009-12-22 18:07:54.000000000 +0100
-+++ Dieterbe-uzbl-4994115/examples/data/uzbl/scripts/instance-select-wmii.sh	2010-01-04 08:43:45.000000000 +0100
+--- Dieterbe-uzbl-4994115/examples/data/scripts/instance-select-wmii.sh~	2009-12-22 18:07:54.000000000 +0100
++++ Dieterbe-uzbl-4994115/examples/data/scripts/instance-select-wmii.sh	2010-01-04 08:43:45.000000000 +0100
 @@ -13,12 +13,7 @@
  
  COLORS=" -nb #303030 -nf khaki -sb #CCFFAA -sf #303030"
