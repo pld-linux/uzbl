@@ -1,0 +1,19 @@
+commit a74d69cc07c5609c0f222e27271d52d00f021984
+Author: Jake Probst <jake.probst@gmail.com>
+Date:   Sun Mar 21 12:49:53 2010 -0700
+
+    fixed some complaint in irc
+
+diff --git a/src/callbacks.c b/src/callbacks.c
+index ced635e..7e9b6e9 100644
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -646,7 +646,7 @@ new_window_cb (WebKitWebView *web_view, WebKitWebFrame *frame,
+ 
+     if (uzbl.state.verbose)
+         printf("New window requested -> %s \n", webkit_network_request_get_uri (request));
+-    send_event(NEW_WINDOW, uzbl.state.selected_url, NULL);
++    send_event(NEW_WINDOW, webkit_network_request_get_uri (request), NULL);
+ 
+     webkit_web_policy_decision_ignore(policy_decision);
+     return TRUE;
