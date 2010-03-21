@@ -2,19 +2,19 @@
 # - unbash example scripts
 
 %define		branch	pawelz
-%define		commit	c75131a
+%define		commit	52446bc
 
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
 Name:		uzbl
-Version:	2010.02.23
+Version:	2010.03.21
 Release:	0.%{branch}.1
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
 Source0:	http://github.com/%{branch}/%{name}/tarball/%{branch}/%{version}
-# Source0-md5:	f05e84a29727d8a49358ad39edee0443
+# Source0-md5:	7d23c12e72098a42c69424d38c89d7bb
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-dmenu.patch
 URL:		http://www.uzbl.org/
