@@ -1,5 +1,3 @@
-# TODO:
-# - unbash example scripts
 
 %define		branch	pawelz
 
