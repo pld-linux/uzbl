@@ -2,7 +2,6 @@
 # - unbash example scripts
 
 %define		branch	pawelz
-%define		commit	52446bc
 
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
@@ -111,7 +110,8 @@ Skrypt, który dodaje do uzbl taby podobne do tych znanych użytkownikom
 przeglądarki firefox.
 
 %prep
-%setup -q -n %{branch}-%{name}-%{commit}
+%setup -qc
+mv %{branch}-%{name}-*/* .
 
 %patch0 -p1
 %patch1 -p1
