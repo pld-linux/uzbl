@@ -1,8 +1,3 @@
-# TODO:
-# - unbash example scripts
-
-%define		commit	38ef86e
-
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
@@ -109,7 +104,8 @@ Skrypt, który dodaje do uzbl taby podobne do tych znanych użytkownikom
 przeglądarki firefox.
 
 %prep
-%setup -q -n Dieterbe-%{name}-%{commit}
+%setup -qc
+mv Dieterbe-%{name}-*/* .
 
 %patch0 -p1
 %patch1 -p1
