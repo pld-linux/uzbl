@@ -18,6 +18,10 @@ BuildRequires:	libsoup-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
 Requires:	%{name}-core = %{epoch}:%{version}-%{release}
+Requires:	dmenu
+Requires:	socat
+Requires:	xclip
+Requires:	zenity
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,11 +48,6 @@ w łatwy sposób rozszerzana.
 Summary:	Uzbl core
 Summary(pl.UTF-8):	Jądro Uzbl
 Group:		X11/Applications/Networking
-Requires:	bash
-Requires:	dmenu
-Requires:	socat
-Requires:	xclip
-Requires:	zenity
 Requires:	gtk-webkit >= 1.2.0-4
 Suggests:	%{name}-cookie-daemon = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-event-manager = %{epoch}:%{version}-%{release}
