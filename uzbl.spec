@@ -1,3 +1,6 @@
+# TODO:
+# - review python deps
+# - s,/usr/bin/env python,/usr/bin/python,
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
@@ -35,14 +38,12 @@ böngésző Webkit alapokon.
 %description -l pl.UTF-8
 uzbl jest przeglądarką, która może być w całości obsługiwana przy
 użyciu klawiatury. Domyślne ustawienia klawiszy są wzorowane na
-skrótach klawiszowych programu vim. Uzbl może działać w modalnym
-trybie podobnie jak vim albo w trybie przypominającym działanie
-emacsa. uzbl wykorzystuje silnik Webkit.
+skrótach klawiszowych programu vim. uzbl wykorzystuje silnik Webkit.
 
-uzbl sam nie obsługuje zakładek, historii, pobierania plików.
-Funkcjonalności te są realizowane przez zewnętrzne skrypty. Dzięki
-temu przeglądarka ta jest bardzo elastyczna, konfigurowalna i może być
-w łatwy sposób rozszerzana.
+uzbl sam nie obsługuje zakładek, historii, pobierania plików. Funkcje
+te są realizowane przez zewnętrzne skrypty. Dzięki temu oraz dzięki
+ładowanym na życzenie skryptom JavaScript przeglądarka ta jest bardzo
+elastyczna, konfigurowalna i może być w łatwy sposób rozszerzana.
 
 %package core
 Summary:	Uzbl core
