@@ -13,7 +13,7 @@ Patch0:		%{name}-config.patch
 Patch1:		%{name}-dmenu.patch
 URL:		http://www.uzbl.org/
 BuildRequires:	gtk+2-devel
-BuildRequires:	gtk-webkit-devel
+BuildRequires:	gtk-webkit-devel >= 1.2.0-4
 BuildRequires:	libsoup-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
@@ -49,6 +49,7 @@ Requires:	dmenu
 Requires:	socat
 Requires:	xclip
 Requires:	zenity
+Requires:	gtk-webkit >= 1.2.0-4
 Suggests:	%{name}-cookie-daemon = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-event-manager = %{epoch}:%{version}-%{release}
 Obsoletes:	uzbl-examples
