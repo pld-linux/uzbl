@@ -1,0 +1,69 @@
+diff --git a/examples/data/scripts/load_url_from_bookmarks.sh b/examples/data/scripts/load_url_from_bookmarks.sh
+index 1e9f9e7..ca49c2b 100755
+--- a/examples/data/scripts/load_url_from_bookmarks.sh
++++ b/examples/data/scripts/load_url_from_bookmarks.sh
+@@ -5,16 +5,10 @@
+ file=${XDG_DATA_HOME:-$HOME/.local/share}/uzbl/bookmarks
+ [ -r "$file" ] || exit
+ COLORS=" -nb #303030 -nf khaki -sb #CCFFAA -sf #303030"
+-if dmenu --help 2>&1 | grep -q '\[-rs\] \[-ni\] \[-nl\] \[-xs\]'
+-then
+-	DMENU="dmenu -i -xs -rs -l 10" # vertical patch
+-	# show tags as well
+-	goto=`$DMENU $COLORS < $file | awk '{print $1}'`
+-else
+-	DMENU="dmenu -i"
+-	# because they are all after each other, just show the url, not their tags.
+-	goto=`awk '{print $1}' $file | $DMENU $COLORS`
+-fi
++
++DMENU="dmenu -i -l 10" # vertical patch
++# show tags as well
++goto=`$DMENU $COLORS < $file | awk '{print $1}'`
+ 
+ #[ -n "$goto" ] && echo "uri $goto" > $4
+ [ -n "$goto" ] && echo "uri $goto" | socat - unix-connect:$5
+diff --git a/examples/data/scripts/load_url_from_history.sh b/examples/data/scripts/load_url_from_history.sh
+index 62e02ac..756c962 100755
+--- a/examples/data/scripts/load_url_from_history.sh
++++ b/examples/data/scripts/load_url_from_history.sh
+@@ -6,19 +6,10 @@ history_file=${XDG_DATA_HOME:-$HOME/.local/share}/uzbl/history
+ # choose from all entries, sorted and uniqued
+ # goto=`awk '{print $3}' $history_file | sort -u | dmenu -i`
+ COLORS=" -nb #303030 -nf khaki -sb #CCFFAA -sf #303030"
+-if dmenu --help 2>&1 | grep -q '\[-rs\] \[-ni\] \[-nl\] \[-xs\]';
+-then
+-        DMENU="dmenu -i -xs -rs -l 10" # vertical patch
+-        # choose an item in reverse order, showing also the date and page titles
+-        # pick the last field from the first 3 fields. this way you can pick a url (prefixed with date & time) or type just a new url.
+-        goto=`tac $history_file | $DMENU $COLORS | cut -d ' ' -f -3  | awk '{print $NF}'`
+-else
+-        DMENU="dmenu -i"
+-	# choose from all entries (no date or title), the first one being current url, and after that all others, sorted and uniqued, in ascending order
+-	current=`tail -n 1 $history_file | awk '{print $3}'`;
+-  goto=`(echo $current; awk '{print $3}' $history_file | grep -v "^$current\$" \
+-      | sort -u) | $DMENU $COLORS`
+-fi
++DMENU="dmenu -i -l 10" # vertical patch
++# choose an item in reverse order, showing also the date and page titles
++# pick the last field from the first 3 fields. this way you can pick a url (prefixed with date & time) or type just a new url.
++goto=`tac $history_file | $DMENU $COLORS | cut -d ' ' -f -3  | awk '{print $NF}'`
+ 
+ [ -n "$goto" ] && echo "uri $goto" > $4
+ #[ -n "$goto" ] && echo "uri $goto" | socat - unix-connect:$5
+--- Dieterbe-uzbl-4994115/examples/data/scripts/instance-select-wmii.sh~	2009-12-22 18:07:54.000000000 +0100
++++ Dieterbe-uzbl-4994115/examples/data/scripts/instance-select-wmii.sh	2010-01-04 08:43:45.000000000 +0100
+@@ -13,12 +13,7 @@
+ 
+ COLORS=" -nb #303030 -nf khaki -sb #CCFFAA -sf #303030"
+ 
+-if dmenu --help 2>&1 | grep -q '\[-rs\] \[-ni\] \[-nl\] \[-xs\]'
+-then
+-        DMENU="dmenu -i -xs -rs -l 10" # vertical patch
+-else
+-        DMENU="dmenu -i"
+-fi
++DMENU="dmenu -i -l 10" # vertical patch
+ 
+ if [ "$1" == 'list' ]
+ then
