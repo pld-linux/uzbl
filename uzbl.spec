@@ -71,7 +71,7 @@ Group:		X11/Applications/Networking
 %description event-manager
 Uzbl event manager.
 
-%description event-manager
+%description event-manager -l pl.UTF-8
 Zarządca zdarzeń dla uzbl.
 
 %package cookie-daemon
