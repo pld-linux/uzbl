@@ -5,14 +5,13 @@ Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) 
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
 Name:		uzbl
-Version:	2010.08.05
+Version:	2011.11.28
 Release:	1
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
 Source0:	http://github.com/Dieterbe/uzbl/tarball/%{version}
-# Source0-md5:	b6e3323337d2093e55c7d85648bab3aa
-Patch0:		%{name}-dmenu.patch
+# Source0-md5:	6e55474050b5df43d8bdd403248b1da6
 URL:		http://www.uzbl.org/
 BuildRequires:	gtk+2-devel
 BuildRequires:	gtk-webkit-devel >= 1.2.0-4
@@ -49,7 +48,6 @@ Summary:	Uzbl core
 Summary(pl.UTF-8):	Jądro Uzbl
 Group:		X11/Applications/Networking
 Requires:	gtk-webkit >= 1.2.0-4
-Suggests:	%{name}-cookie-daemon = %{epoch}:%{version}-%{release}
 Suggests:	%{name}-event-manager = %{epoch}:%{version}-%{release}
 Obsoletes:	uzbl-examples
 Obsoletes:	uzbl-scripts
@@ -74,17 +72,6 @@ Uzbl event manager.
 %description event-manager -l pl.UTF-8
 Zarządca zdarzeń dla uzbl.
 
-%package cookie-daemon
-Summary:	Uzbl cookie daemon
-Summary(pl.UTF-8):	Serwer ciasteczek dla uzbl
-Group:		X11/Applications/Networking
-
-%description cookie-daemon
-uzbl-cookie-daemon provides http cookies for uzbl.
-
-%description cookie-daemon -l pl.UTF-8
-Obsługa ciasteczek http (coockies) dla przeglądarki uzbl.
-
 %package tabbed
 Summary:	Tabs for uzbl
 Summary(hu.UTF-8):	Tabok uzbl-hez
@@ -106,8 +93,6 @@ przeglądarki firefox.
 %prep
 %setup -qc
 mv Dieterbe-%{name}-*/* .
-
-%patch0 -p1
 
 %build
 %{__make}
@@ -145,16 +130,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/uzbl/examples/data/plugins/*
 %{_datadir}/uzbl/examples/data/dforms
 %{_datadir}/uzbl/examples/data/bookmarks
-%{_datadir}/uzbl/examples/data/style.css
+%{_datadir}/uzbl/examples/data/per-site-settings
 %{_datadir}/uzbl/examples/data/uzbl.png
 
 %files event-manager
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/uzbl-event-manager
-
-%files cookie-daemon
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/uzbl-cookie-daemon
 
 %files tabbed
 %defattr(644,root,root,755)
