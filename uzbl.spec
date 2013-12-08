@@ -5,18 +5,21 @@ Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) 
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
 Name:		uzbl
-Version:	2012.05.14
+Version:	2013.12.08
 Release:	1
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
-Source0:	https://github.com/Dieterbe/uzbl/archive/%{version}.tar.gz
-# Source0-md5:	8d644ecb28cb27fbc971c771156dee6f
+# Source0:	https://github.com/Dieterbe/uzbl/archive/%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.bz2
+# Source0-md5:	ff21df4ce77829ec35f3632b5232069d
+Patch0:		%{name}-build.patch
 URL:		http://www.uzbl.org/
-BuildRequires:	gtk+2-devel
-BuildRequires:	gtk-webkit-devel >= 1.2.0-4
+BuildRequires:	gtk+3-devel
+BuildRequires:	gtk-webkit3-devel >= 1.2.0-4
 BuildRequires:	libsoup-devel
 BuildRequires:	pkgconfig
+BuildRequires:	python3-devel
 BuildRequires:	rpm-pythonprov
 Requires:	%{name}-core = %{epoch}:%{version}-%{release}
 Requires:	dmenu
@@ -92,6 +95,7 @@ przeglądarki firefox.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make}
@@ -124,13 +128,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/uzbl/examples/config
 %dir %{_datadir}/uzbl/examples/data
 %dir %{_datadir}/uzbl/examples/data/scripts
-%dir %{_datadir}/uzbl/examples/data/plugins
+#%dir %{_datadir}/uzbl/examples/data/plugins
 %attr(755,root,root) %{_datadir}/uzbl/examples/data/scripts/*
-%attr(755,root,root) %{_datadir}/uzbl/examples/data/plugins/*
+#%attr(755,root,root) %{_datadir}/uzbl/examples/data/plugins/*
 %{_datadir}/uzbl/examples/data/dforms
 %{_datadir}/uzbl/examples/data/bookmarks
 %{_datadir}/uzbl/examples/data/per-site-settings
 %{_datadir}/uzbl/examples/data/uzbl.png
+
+%{py3_sitescriptdir}/uzbl*.egg-info
+%{py3_sitescriptdir}/uzbl
 
 %files event-manager
 %defattr(644,root,root,755)
