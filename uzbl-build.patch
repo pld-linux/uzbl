@@ -1,0 +1,11 @@
+--- uzbl-2013.12.08/Makefile~	2013-12-08 16:48:28.000000000 +0100
++++ uzbl-2013.12.08/Makefile	2013-12-08 17:07:53.206953656 +0100
+@@ -189,7 +189,7 @@
+ 	install -m755 uzbl-core $(INSTALLDIR)/bin/uzbl-core
+ 
+ install-event-manager: install-dirs
+-	$(PYTHON) setup.py install --prefix=$(PREFIX) --install-scripts=$(INSTALLDIR)/bin $(PYINSTALL_EXTRA)
++	$(PYTHON) setup.py install --prefix=$(PREFIX) --root=$(DESTDIR) --install-scripts=$(PREFIX)/bin $(PYINSTALL_EXTRA)
+ 
+ install-uzbl-browser: install-dirs install-uzbl-core install-event-manager
+ 	sed 's#^PREFIX=.*#PREFIX=$(RUN_PREFIX)#' < bin/uzbl-browser > $(INSTALLDIR)/bin/uzbl-browser
