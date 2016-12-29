@@ -6,7 +6,7 @@ Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosí
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
 Name:		uzbl
 Version:	2013.12.08
-Release:	3
+Release:	4
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
