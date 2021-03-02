@@ -1,6 +1,6 @@
 # TODO:
 # - review python deps
-# - s,/usr/bin/env python,/usr/bin/python,
+#
 Summary:	A keyboard controlled (modal vim-like bindings, or with modifier keys) browser based on Webkit
 Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosító kódok) böngésző Webkit alapokon
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
@@ -96,6 +96,16 @@ przeglądarki firefox.
 %prep
 %setup -q
 %patch0 -p1
+
+%{__sed} -E -i -e '1s,#!\s*/usr/bin/env\s+python(\s|$),#!%{__python3}\1,' -e '1s,#!\s*/usr/bin/python(\s|$),#!%{__python3}\1,' \
+      bin/uzbl-tabbed \
+      examples/data/scripts/auth.py \
+      examples/data/scripts/per-site-settings.py \
+      examples/data/scripts/scheme.py \
+      examples/data/scripts/uzblcat
+
+%{__sed} -E -i -e '1s,#!\s*/usr/bin/env\s+python3(\s|$),#!%{__python3}\1,' \
+      uzbl/event_manager.py
 
 %build
 %{__make}
