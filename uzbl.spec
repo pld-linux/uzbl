@@ -6,7 +6,7 @@ Summary(hu.UTF-8):	Egy billentyűzettel irányítható (vim-szerű vagy módosí
 Summary(pl.UTF-8):	Minimalistyczna przeglądarka w całości obsługiwana przy użyciu klawiatury
 Name:		uzbl
 Version:	2013.12.08
-Release:	9
+Release:	10
 License:	GPL v3
 Group:		X11/Applications/Networking
 # git://github.com/Dieterbe/uzbl.git
@@ -108,6 +108,7 @@ przeglądarki firefox.
       uzbl/event_manager.py
 
 %build
+export CFLAGS="%{rpmcflags}"
 %{__make}
 
 %install
