@@ -147,8 +147,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/uzbl/examples/data/per-site-settings
 %{_datadir}/uzbl/examples/data/uzbl.png
 
-%{py3_sitedir}/uzbl*.egg-info
-%{py3_sitedir}/uzbl
+%{py3_sitescriptdir}/uzbl*.egg-info
+%{py3_sitescriptdir}/uzbl
 
 %files event-manager
 %defattr(644,root,root,755)
